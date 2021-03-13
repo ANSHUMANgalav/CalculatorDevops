@@ -56,7 +56,7 @@ public class App
     
     static double root(double a) {
         if(a < 0){
-            throw new IllegalArgumentException("root is not defined for negavive numbers");
+            throw new ArithmeticException("root is not defined for negavive numbers");
 
         }
     //	logger.info("square root of "+a);
