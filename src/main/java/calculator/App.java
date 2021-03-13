@@ -1,63 +1,88 @@
 package calculator;
 import java.util.*;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 public class App
-{ private static final Logger logger = LogManager.getLogger(App.class);
+{ //private static final Logger logger = LogManager.getLogger(App.class);
 
-    public static void main(String args[])
+    public static void main(String[] args)
     {
-        int choice, flag=0;
-        double num1,num2;
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Calculator");
-        do {
-            System.out.println("1 for Addition\n2 for Subtraction\n3 for Multiplication\n4 for Division\n");
-            System.out.print("Enter your choice: ");
-            choice = scan.nextInt();
-            if (choice > 4 || choice <1) {
-                flag = 1;
-                System.out.println("Invalid choice, exiting\n");
+        int choice;
+        boolean flag=true;
+        double n1,n2;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("**********CALCULATOR**********");
+        while(flag) {
+            System.out.println("for square root press : 1");
+            System.out.println("for factorial press   : 2");
+            System.out.println("for natural log press : 3");
+            System.out.println("for power func. press : 4");
+            System.out.println("To exit press         : 5");
+            choice = sc.nextInt();
+            if (choice > 5 || choice <1) {
+                System.out.println("Enter a valid option mate\n");
             }
-            else if (flag != 1){
-            	 System.out.println("Enter two numbers");
-                 System.out.print("Enter number 1: ");
-                 num1 = scan.nextDouble();
-                 System.out.print("Enter number 2: ");
-                 num2 = scan.nextDouble();
-                 
-                 switch(choice) {
-                 case 1: System.out.println(num1+" + "+num2+" = "+Add(num1, num2));
-                 		break;
-                 case 2: System.out.println(num1+" - "+num2+" = "+Subtract(num1, num2));
-                 		break;
-                 case 3: System.out.println(num1+" * "+num2+" = "+Multiply(num1, num2));
-                 		break;
-                 case 4: System.out.println(num1+" / "+num2+" = "+Divide(num1, num2));
-                		break;
-                default: System.out.println("Exiting, Bye");
-                flag=1;
-                }
+            else if(choice == 1){
+
+                System.out.println("enter the number");
+                n1 = sc.nextDouble();
+                System.out.println("the root of "+n1+" is : "+ root(n1));
             }
-            System.out.println("\n");
-            }while(flag==0);
+            else if(choice == 2){
+                System.out.println("enter the number");
+                n1 = sc.nextDouble();
+                System.out.println("the factorial is : " + fac(n1));
+            }
+            else if(choice == 3){
+                System.out.println("enter the number");
+                n1= sc.nextDouble();
+                System.out.println("the log of "+n1+" is : "+log(n1));
+            }
+            else if(choice == 4){
+                System.out.println("enter base");
+                n1=sc.nextDouble();
+                System.out.println("enter power");
+                n2=sc.nextDouble();
+                System.out.println("the result is : " + pow(n1,n2));
+            }
+            else if(choice == 5){
+                System.out.println("**********EXITING**********");
+                flag = false;
+            }
+
+
+            }
     }
     
-    static double Add(double a, double b) {
-    	logger.info("adding numbers "+a +"and"+b);
-        return a + b;
+    static double root(double a) {
+        if(a < 0){
+            throw new IllegalArgumentException("root is not defined for negavive numbers");
+
+        }
+    //	logger.info("square root of "+a);
+        return Math.sqrt(a) ;
     }
-    static double Subtract(double a, double b) {
-        logger.info("subtracting numbers "+a +"and"+b);
-        return a - b;
+    static double fac(double a) {
+        if(a < 0){
+            throw new IllegalArgumentException("factorial is not defined for negavive numbers");
+
+        }
+      //  logger.info("factorial of "+a );
+        double fac =1;
+        for(double i =1 ; i<=a ;i++){
+            fac = fac*i;
+        }
+        return fac ;
     }
-    static double Multiply(double a, double b) {
-    	return a * b;
+    static double log(double a) {
+        if(a < 0){
+            throw new IllegalArgumentException("factorial is not defined for negavive numbers");
+
+        }
+    	//logger.info("taking natural log of "+a);
+        return Math.log(a) ;
     }
-    static double Divide(double a, double b) {
-    	if (b == 0) {
-    		throw new IllegalArgumentException("Divisor cannot be zero, Exiting");
-    	}
-    	else return a / b;
+    static double pow(double a, double b) {
+    	 return Math.pow(a, b);
     }
 }
