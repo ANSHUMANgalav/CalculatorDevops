@@ -3,7 +3,7 @@ import java.util.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 public class App
-{ private static final Logger logger = LogManager.getLogger(App.class);
+{private static final Logger logger = LogManager.getLogger(App.class);
 
     public static void main(String[] args)
     {
@@ -54,31 +54,40 @@ public class App
             }
     }
     
+
     static double root(double a) {
-       // if(a < 0){
-            throw new ArithmeticException("root is not defined for negavive numbers");
-//
-  //      }
-    	logger.info("square root of "+a);
         return Math.sqrt(a) ;
     }
-    static double fac(double a) {
-        if(a < 0){
-            throw new IllegalArgumentException("factorial is not defined for negavive numbers");
 
-        }
+    static double fac(double a) {
+
         logger.info("factorial of "+a );
         double fac =1;
-        for(double i =1 ; i<=a ;i++){
-            fac = fac*i;
+        try {
+            if(a<0){
+                fac = Double.NaN;
+                throw new ArithmeticException("fac not defined for negative numbers");
+            }
+            if(a!= (int)a){
+                fac = Double.NaN;
+                throw new ArithmeticException("fac not defined for fractional numbers");
+
+            }
+
+            else {
+                for (double i = 1; i <= a; i++) {
+                    fac = fac * i;
+                }
+            }
+        } catch (ArithmeticException e) {
+            logger.error("Error : " + e.getMessage());
+        } finally {
+            logger.info("Result : " + fac);
         }
         return fac ;
     }
     static double log(double a) {
-        if(a < 0){
-            throw new IllegalArgumentException("factorial is not defined for negavive numbers");
 
-        }
     	logger.info("taking natural log of "+a);
         return Math.log(a) ;
     }

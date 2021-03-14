@@ -14,13 +14,106 @@ public class CalculatorTest {
 	    }
 
 	@Test
-	public void testroot() {
+	public void testroot1() {
 		double a = 4.0;
-
-		double expectedResult = 2.0;
+		double expectedResult = 2;
 		double result = calculator.root(a);
 		Assert.assertEquals(expectedResult, result, 0);
 	}
+	@Test
+	public void testroot2() {
+		double a = -4.0;
+		double expectedResult = Double.NaN;
+		double result = calculator.root(a);
+		Assert.assertEquals(expectedResult, result, 0);
+	}
+
+	@Test
+	public void testfac1(){
+	    double a = 5.0;
+	    double expectedResult = 120.0;
+	    double result = calculator.fac(a);
+	    Assert.assertEquals(expectedResult, result,0);
+
+
+	}
+	@Test
+	public void testfac2(){
+		double a = 0.0;
+		double expectedResult = 1.0;
+		double result = calculator.fac(a);
+		Assert.assertEquals(expectedResult, result,0);
+
+
+	}
+	@Test
+	public void testfac3(){
+		double a = -5.0;
+		double expectedResult = Double.NaN;
+		double result = calculator.fac(a);
+		Assert.assertEquals(expectedResult, result,0);
+
+
+	}
+
+	@Test
+	public void testlog1(){
+		double a = 10.0;
+		double expectedResult = 2.302585092994046;
+		double result = calculator.log(a);
+		Assert.assertEquals(expectedResult, result,0);
+
+
+	}
+	@Test
+	public void testlog2(){
+		double a = 1.0;
+		double expectedResult = 0.0;
+		double result = calculator.log(a);
+		Assert.assertEquals(expectedResult, result,0);
+
+
+	}
+	@Test
+	public void testlog3(){
+		double a = 0.0;
+		double expectedResult = Double.NEGATIVE_INFINITY;
+		double result = calculator.log(a);
+		Assert.assertEquals(expectedResult, result,0);
+
+
+	}
+	@Test
+	public void testpow1(){
+		double a = 0.0;
+		double b = 50.0;
+		double expectedResult = 0.0;
+		double result = calculator.pow(a,b);
+		Assert.assertEquals(expectedResult, result,0);
+
+
+	}
+	@Test
+	public void testpow2(){
+		double a = 2.0;
+		double b = 5.0;
+		double expectedResult = 32.0;
+		double result = calculator.pow(a,b);
+		Assert.assertEquals(expectedResult, result,0);
+
+
+	}
+	@Test
+	public void testpow3(){
+		double a = 5.0;
+		double b = -5.0;
+		double expectedResult = 0.00032;
+		double result = calculator.pow(a,b);
+		Assert.assertEquals(expectedResult, result,0);
+
+
+	}
+
 
 //		@Test
 //	    public void testAdd() {
