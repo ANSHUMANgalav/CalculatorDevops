@@ -1,9 +1,9 @@
 package calculator;
 import java.util.*;
-//import org.apache.logging.log4j.LogManager;
-//import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 public class App
-{ //private static final Logger logger = LogManager.getLogger(App.class);
+{ private static final Logger logger = LogManager.getLogger(App.class);
 
     public static void main(String[] args)
     {
@@ -55,11 +55,11 @@ public class App
     }
     
     static double root(double a) {
-        if(a < 0){
+       // if(a < 0){
             throw new ArithmeticException("root is not defined for negavive numbers");
-
-        }
-    //	logger.info("square root of "+a);
+//
+  //      }
+    	logger.info("square root of "+a);
         return Math.sqrt(a) ;
     }
     static double fac(double a) {
@@ -67,7 +67,7 @@ public class App
             throw new IllegalArgumentException("factorial is not defined for negavive numbers");
 
         }
-      //  logger.info("factorial of "+a );
+        logger.info("factorial of "+a );
         double fac =1;
         for(double i =1 ; i<=a ;i++){
             fac = fac*i;
@@ -79,7 +79,7 @@ public class App
             throw new IllegalArgumentException("factorial is not defined for negavive numbers");
 
         }
-    	//logger.info("taking natural log of "+a);
+    	logger.info("taking natural log of "+a);
         return Math.log(a) ;
     }
     static double pow(double a, double b) {
